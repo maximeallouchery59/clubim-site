@@ -190,8 +190,8 @@
         { c: [50.63002, 3.09788], nom: "Marbrerie", marche: "5 min à pied" }
       ];
       const map = L.map("agence-map", { scrollWheelZoom: false });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19
       }).addTo(map);
 

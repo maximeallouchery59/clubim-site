@@ -139,11 +139,11 @@ h3 { font-size: 1.35rem; }
 /* ---------- Topbar ---------- */
 
 .topbar {
-  background: linear-gradient(180deg, #060b1a 0%, var(--navy-deep) 100%);
-  color: rgba(255, 255, 255, 0.62);
+  background: var(--cream);
+  color: var(--muted);
   font-size: 0.78rem;
   letter-spacing: 0.09em;
-  border-bottom: 1px solid rgba(190, 58, 72, 0.32);
+  border-bottom: 1px solid var(--line);
 }
 .topbar .container-wide {
   display: flex;
@@ -153,13 +153,13 @@ h3 { font-size: 1.35rem; }
   gap: 20px;
 }
 .topbar a { transition: color 0.25s; }
-.topbar a:hover { color: var(--gold-light); }
+.topbar a:hover { color: var(--gold); }
 .topbar-contact { display: flex; align-items: center; gap: 24px; }
-.topbar-contact a:first-child { color: var(--gold-light); letter-spacing: 0.16em; font-weight: 400; }
+.topbar-contact a:first-child { color: var(--gold); letter-spacing: 0.16em; font-weight: 400; }
 .topbar-contact a:first-child::before { content: "✆"; margin-right: 9px; font-size: 1em; }
-.topbar-contact a + a { border-left: 1px solid rgba(255, 255, 255, 0.14); padding-left: 24px; }
+.topbar-contact a + a { border-left: 1px solid var(--line); padding-left: 24px; }
 .topbar-right { display: flex; gap: 22px; align-items: center; }
-.topbar-right a { border-left: 1px solid rgba(255, 255, 255, 0.14); padding-left: 22px; }
+.topbar-right a { border-left: 1px solid var(--line); padding-left: 22px; }
 .topbar-right a::after { content: "→"; color: var(--gold); margin-left: 8px; font-size: 0.9em; }
 
 /* ---------- Header / nav ---------- */
@@ -855,6 +855,7 @@ h3 { font-size: 1.35rem; }
   z-index: 1; /* contient les calques Leaflet sous le header et le chatbot */
   background: var(--cream);
 }
+#agence-map .leaflet-tile-pane { filter: grayscale(1) brightness(1.06) contrast(0.92); }
 #agence-map .leaflet-popup-content-wrapper {
   border-radius: 0;
   border: 1px solid var(--gold);
