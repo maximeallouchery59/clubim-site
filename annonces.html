@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos annonces : acheter ou louer à Lille | CLUBIM</title>
+  <meta name="description" content="Toutes les annonces CLUBIM : appartements, maisons, commerces et bureaux à louer ou à vendre dans la métropole lilloise.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container-wide">
+      <div class="topbar-contact">
+        <a href="tel:+33606549798">06 06 54 97 98</a>
+        <a href="mailto:maxime.allouchery59@gmail.com" class="hide-m"><span class="hide-m">maxime.allouchery59@gmail.com</span></a>
+      </div>
+      <div class="topbar-right">
+        <span class="hide-m">205 rue Pierre Legrand, Lille</span>
+        <a href="estimation.html">Estimation gratuite</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container-wide">
+      <a class="logo" href="index.html" aria-label="CLUBIM, accueil">
+        <img src="assets/logo/clubim-logo-court.svg" alt="CLUBIM, agence immobilière à Lille" width="146" height="50">
+      </a>
+      <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul class="main-nav">
+        <li><button class="nav-close" aria-label="Fermer le menu">×</button></li>
+        <li><a href="annonces.html?transaction=location">Louer</a></li>
+        <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+        <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li class="has-sub"><a href="a-propos.html">L'agence</a>
+          <ul class="sub-nav">
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+          </ul>
+        </li>
+        <li class="nav-cta"><a class="btn btn-gold" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="deco"></div>
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> / Nos annonces</p>
+      <h1>Nos <span class="gold-i">annonces</span></h1>
+      <p>Maisons, appartements, lofts, immeubles de rapport et locaux professionnels, sélectionnés et vérifiés un par un, dans toute la métropole lilloise.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <form class="filters-bar" id="filters">
+        <div class="search-fields">
+          <div class="field">
+            <label for="f-transaction">Transaction</label>
+            <select id="f-transaction" name="transaction">
+              <option value="">Achat &amp; location</option>
+              <option value="achat">Acheter</option>
+              <option value="location">Louer</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-type">Type de bien</label>
+            <select id="f-type" name="type">
+              <option value="">Tous les biens</option>
+              <option>Maison</option>
+              <option>Appartement</option>
+              <option>Loft</option>
+              <option>Immeuble</option>
+              <option>Bureaux</option>
+              <option>Local commercial</option>
+              <option>Parking</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-ville">Commune</label>
+            <select id="f-ville" name="ville"></select>
+          </div>
+          <div class="field">
+            <label for="f-budget">Budget maximum</label>
+            <input id="f-budget" name="budget" type="number" placeholder="ex : 500 000" min="0" step="1000">
+          </div>
+          <div class="field">
+            <label for="f-tri">Trier par</label>
+            <select id="f-tri" name="tri">
+              <option value="">Pertinence</option>
+              <option value="prix-asc">Prix croissant</option>
+              <option value="prix-desc">Prix décroissant</option>
+              <option value="surface">Surface</option>
+            </select>
+          </div>
+          <button class="btn btn-navy" type="submit">Filtrer</button>
+        </div>
+      </form>
+
+      <p class="results-count" id="results-count"></p>
+      <div class="listings-grid" id="listings-grid"></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <p class="kicker">Recherche personnalisée</p>
+          <h2>Le bien idéal n'est <span class="gold-i">pas encore en ligne ?</span></h2>
+          <p>Confiez-nous votre recherche : nous vous présentons les biens en avant-première, avant leur diffusion publique.</p>
+        </div>
+        <a class="btn btn-gold" href="contact.html">Confier ma recherche <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="footer-logo" href="index.html" aria-label="CLUBIM, accueil">
+            <img src="assets/logo/clubim-logo-blanc.svg" alt="CLUBIM, agence immobilière à Lille" width="240" height="105">
+          </a>
+          <p>Agence immobilière indépendante à Lille : location et vente dans toute la métropole. Honoraires de vente : 5 % TTC tout inclus.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/clubim.immo" target="_blank" rel="noopener noreferrer" aria-label="Facebook CLUBIM Immobilier">f</a>
+            <a href="https://www.instagram.com/clubim_immobilier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram clubim_immobilier">ig</a>
+            <a href="https://www.linkedin.com/in/maxime-allouchery-124648220/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div>
+          <h4>Nos services</h4>
+          <ul>
+            <li><a href="annonces.html?transaction=location">Louer</a></li>
+            <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+            <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+            <li><a href="dossier-locataire.html">Déposer mon dossier locataire</a></li>
+            <li><a href="tarifs.html">Nos tarifs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>L'agence</h4>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Nous trouver</h4>
+          <p><strong>CLUBIM</strong><br>205 rue Pierre Legrand<br>59800 Lille</p>
+          <p><strong>06 06 54 97 98</strong><br>maxime.allouchery59@gmail.com</p>
+          <p>Sur rendez-vous,<br>du lundi au vendredi</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="year"></span> CLUBIM. Tous droits réservés.</p>
+        <nav>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+          <a href="mentions-legales.html#cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cookies.js"></script>
+  <script src="js/annonces.js"></script>
+</body>
+</html>

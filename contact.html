@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact : Agence CLUBIM, Lille</title>
+  <meta name="description" content="Contactez CLUBIM : 205 rue Pierre Legrand à Lille, 06 06 54 97 98. Location, vente, estimation : Maxime Allouchery vous répond sous 24 h ouvrées.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container-wide">
+      <div class="topbar-contact">
+        <a href="tel:+33606549798">06 06 54 97 98</a>
+        <a href="mailto:maxime.allouchery59@gmail.com" class="hide-m"><span class="hide-m">maxime.allouchery59@gmail.com</span></a>
+      </div>
+      <div class="topbar-right">
+        <span class="hide-m">205 rue Pierre Legrand, Lille</span>
+        <a href="estimation.html">Estimation gratuite</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container-wide">
+      <a class="logo" href="index.html" aria-label="CLUBIM, accueil">
+        <img src="assets/logo/clubim-logo-court.svg" alt="CLUBIM, agence immobilière à Lille" width="146" height="50">
+      </a>
+      <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul class="main-nav">
+        <li><button class="nav-close" aria-label="Fermer le menu">×</button></li>
+        <li><a href="annonces.html?transaction=location">Louer</a></li>
+        <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+        <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li class="has-sub"><a href="a-propos.html">L'agence</a>
+          <ul class="sub-nav">
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+          </ul>
+        </li>
+        <li class="nav-cta"><a class="btn btn-gold" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="deco"></div>
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> / Contact</p>
+      <h1>Parlons de votre <span class="gold-i">projet</span></h1>
+      <p>Par téléphone, par écrit ou autour d'un café rue Pierre Legrand : nous vous répondons sous 24 h ouvrées.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div>
+            <h3>L'agence</h3>
+            <p>CLUBIM. Agence immobilière<br>205 rue Pierre Legrand<br>59800 Lille</p>
+          </div>
+          <div>
+            <h3>Téléphone</h3>
+            <p><a href="tel:+33606549798" style="color:var(--gold)">06 06 54 97 98</a><br>Sur rendez-vous, du lundi au vendredi</p>
+          </div>
+          <div>
+            <h3>E-mail</h3>
+            <p><a href="mailto:maxime.allouchery59@gmail.com" style="color:var(--gold)">maxime.allouchery59@gmail.com</a><br>Réponse sous 24 h ouvrées</p>
+          </div>
+          <div>
+            <h3>Accès</h3>
+            <p><strong style="color:var(--gold)">Métro ligne 1</strong> : l'agence est entre deux stations :<br>Fives à 4 min à pied, Marbrerie à 5 min<br>Stationnement aisé rue Pierre Legrand</p>
+          </div>
+        </div>
+
+        <form class="form-card reveal" data-demo>
+          <div class="form-success">Merci pour votre message !<br>Maxime Allouchery vous recontacte sous 24 h ouvrées.</div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="c-nom">Nom et prénom *</label>
+              <input id="c-nom" type="text" required>
+            </div>
+            <div class="field">
+              <label for="c-tel">Téléphone</label>
+              <input id="c-tel" type="tel">
+            </div>
+            <div class="field full">
+              <label for="c-email">Adresse e-mail *</label>
+              <input id="c-email" type="email" required>
+            </div>
+            <div class="field full">
+              <label for="c-sujet">Votre demande concerne *</label>
+              <select id="c-sujet" required>
+                <option value="">Sélectionner…</option>
+                <option>Un achat</option>
+                <option>Une vente / estimation</option>
+                <option>Une location</option>
+                <option>Une candidature</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="c-message">Votre message *</label>
+              <textarea id="c-message" rows="6" required placeholder="Décrivez votre projet en quelques lignes…"></textarea>
+            </div>
+          </div>
+          <p style="margin-top:26px"><button class="btn btn-gold" type="submit">Envoyer mon message <span class="arrow">→</span></button></p>
+          <p class="form-note">* Champs obligatoires. Vos données ne servent qu'au traitement de votre demande, voir notre <a href="mentions-legales.html#confidentialite" style="color:var(--gold)">politique de confidentialité</a>.</p>
+        </form>
+      </div>
+
+      <div class="contact-map reveal" style="margin-top:50px">
+        <div id="agence-map" aria-label="Carte : agence CLUBIM, 205 rue Pierre Legrand à Lille, et stations de métro Fives et Marbrerie"></div>
+        <div class="map-legend">
+          <span><i class="legend-pin"></i>Agence CLUBIM, 205 rue Pierre Legrand, 59800 Lille</span>
+          <span><i class="legend-metro">M</i>Métro ligne 1 : Fives (4 min à pied) · Marbrerie (5 min à pied)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="footer-logo" href="index.html" aria-label="CLUBIM, accueil">
+            <img src="assets/logo/clubim-logo-blanc.svg" alt="CLUBIM, agence immobilière à Lille" width="240" height="105">
+          </a>
+          <p>Agence immobilière indépendante à Lille : location et vente dans toute la métropole. Honoraires de vente : 5 % TTC tout inclus.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/clubim.immo" target="_blank" rel="noopener noreferrer" aria-label="Facebook CLUBIM Immobilier">f</a>
+            <a href="https://www.instagram.com/clubim_immobilier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram clubim_immobilier">ig</a>
+            <a href="https://www.linkedin.com/in/maxime-allouchery-124648220/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div>
+          <h4>Nos services</h4>
+          <ul>
+            <li><a href="annonces.html?transaction=location">Louer</a></li>
+            <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+            <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+            <li><a href="dossier-locataire.html">Déposer mon dossier locataire</a></li>
+            <li><a href="tarifs.html">Nos tarifs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>L'agence</h4>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Nous trouver</h4>
+          <p><strong>CLUBIM</strong><br>205 rue Pierre Legrand<br>59800 Lille</p>
+          <p><strong>06 06 54 97 98</strong><br>maxime.allouchery59@gmail.com</p>
+          <p>Sur rendez-vous,<br>du lundi au vendredi</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="year"></span> CLUBIM. Tous droits réservés.</p>
+        <nav>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+          <a href="mentions-legales.html#cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cookies.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function () {
+      const AGENCE = [50.63188, 3.09397];
+      const STATIONS = [
+        { c: [50.63302, 3.09055], nom: "Fives", marche: "4 min à pied" },
+        { c: [50.63002, 3.09788], nom: "Marbrerie", marche: "5 min à pied" }
+      ];
+      const map = L.map("agence-map", { scrollWheelZoom: false });
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      // Agence
+      const agenceIcon = L.divIcon({
+        className: "",
+        html: '<div class="map-agence"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7" stroke="#E9707C" stroke-width="1.6"/><rect x="6" y="11" width="12" height="9" stroke="#E9707C" stroke-width="1.6"/><rect x="10.5" y="14" width="3" height="6" fill="#BE3A48"/></svg><span>CLUBIM</span></div>',
+        iconSize: [110, 72],
+        iconAnchor: [55, 50]
+      });
+      L.marker(AGENCE, { icon: agenceIcon, zIndexOffset: 1000 })
+        .addTo(map)
+        .bindPopup("<strong>CLUBIM</strong><br>205 rue Pierre Legrand<br>59800 Lille");
+
+      // Stations de métro + liaisons piétonnes
+      STATIONS.forEach(function (s) {
+        L.polyline([AGENCE, s.c], { color: "#BE3A48", weight: 2, dashArray: "6 8", opacity: 0.85 }).addTo(map);
+        const ic = L.divIcon({
+          className: "",
+          html: '<div class="map-metro-wrap"><div class="map-metro">M</div><span class="map-metro-label">' + s.nom + " · " + s.marche + "</span></div>",
+          iconSize: [120, 58],
+          iconAnchor: [60, 15]
+        });
+        L.marker(s.c, { icon: ic })
+          .addTo(map)
+          .bindPopup("<strong>Métro " + s.nom + "</strong><br>Ligne 1, " + s.marche + " de l'agence");
+      });
+
+      map.fitBounds(L.latLngBounds([AGENCE].concat(STATIONS.map(function (s) { return s.c; }))).pad(0.3));
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimation immobilière gratuite à Lille | CLUBIM</title>
+  <meta name="description" content="Faites estimer votre maison ou appartement par CLUBIM : une analyse fondée sur les ventes réellement actées dans votre quartier, gratuite et sans engagement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container-wide">
+      <div class="topbar-contact">
+        <a href="tel:+33606549798">06 06 54 97 98</a>
+        <a href="mailto:maxime.allouchery59@gmail.com" class="hide-m"><span class="hide-m">maxime.allouchery59@gmail.com</span></a>
+      </div>
+      <div class="topbar-right">
+        <span class="hide-m">205 rue Pierre Legrand, Lille</span>
+        <a href="estimation.html">Estimation gratuite</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container-wide">
+      <a class="logo" href="index.html" aria-label="CLUBIM, accueil">
+        <img src="assets/logo/clubim-logo-court.svg" alt="CLUBIM, agence immobilière à Lille" width="146" height="50">
+      </a>
+      <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul class="main-nav">
+        <li><button class="nav-close" aria-label="Fermer le menu">×</button></li>
+        <li><a href="annonces.html?transaction=location">Louer</a></li>
+        <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+        <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li class="has-sub"><a href="a-propos.html">L'agence</a>
+          <ul class="sub-nav">
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+          </ul>
+        </li>
+        <li class="nav-cta"><a class="btn btn-gold" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="deco"></div>
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> / Estimation</p>
+      <h1>Estimer votre bien à sa <span class="gold-i">juste valeur</span></h1>
+      <p>Gratuite, documentée et sans engagement : notre estimation s'appuie sur les ventes réellement actées dans votre quartier, pas sur les prix affichés, souvent trompeurs.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <p class="kicker">Notre méthode</p>
+        <h2>Quatre étapes, zéro <span class="gold-i">approximation</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <h3>Votre demande</h3>
+          <p>Vous décrivez votre bien en deux minutes via le formulaire ci-dessous. Maxime Allouchery vous rappelle sous 24 h ouvrées.</p>
+        </div>
+        <div class="step reveal">
+          <h3>La visite conseil</h3>
+          <p>Nous visitons votre bien : surfaces, prestations, travaux, environnement. Rien ne remplace l'œil d'un professionnel du quartier.</p>
+        </div>
+        <div class="step reveal">
+          <h3>L'analyse du marché</h3>
+          <p>Croisement des ventes actées (bases notariales), des biens en concurrence et de la demande réelle enregistrée à l'agence.</p>
+        </div>
+        <div class="step reveal">
+          <h3>L'avis de valeur</h3>
+          <p>Vous recevez un rapport écrit et argumenté : fourchette de valeur, stratégie de mise en vente, délais prévisibles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container" style="max-width:880px">
+      <div class="section-head center">
+        <p class="kicker">Demande d'estimation</p>
+        <h2>Parlez-nous de <span class="gold-i">votre bien</span></h2>
+      </div>
+      <form class="form-card" data-demo>
+        <div class="form-success">Merci ! Votre demande d'estimation a bien été enregistrée.<br>Maxime Allouchery vous recontacte sous 24 h ouvrées.</div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="e-type">Type de bien *</label>
+            <select id="e-type" required>
+              <option value="">Sélectionner…</option>
+              <option>Maison</option>
+              <option>Appartement</option>
+              <option>Loft</option>
+              <option>Immeuble</option>
+              <option>Local professionnel</option>
+              <option>Terrain</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="e-projet">Votre projet *</label>
+            <select id="e-projet" required>
+              <option value="">Sélectionner…</option>
+              <option>Vendre</option>
+              <option>Mettre en location</option>
+              <option>Simple curiosité</option>
+              <option>Succession / partage</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="e-adresse">Adresse du bien *</label>
+            <input id="e-adresse" type="text" placeholder="N°, rue, commune" required>
+          </div>
+          <div class="field">
+            <label for="e-surface">Surface habitable (m²) *</label>
+            <input id="e-surface" type="number" min="1" placeholder="ex : 120" required>
+          </div>
+          <div class="field">
+            <label for="e-pieces">Nombre de pièces</label>
+            <input id="e-pieces" type="number" min="1" placeholder="ex : 5">
+          </div>
+          <div class="field">
+            <label for="e-annee">Année de construction</label>
+            <input id="e-annee" type="number" min="1700" max="2026" placeholder="ex : 1930">
+          </div>
+          <div class="field">
+            <label for="e-etat">État général</label>
+            <select id="e-etat">
+              <option value="">Sélectionner…</option>
+              <option>À rénover</option>
+              <option>Bon état</option>
+              <option>Excellent état</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Équipements</label>
+            <div class="checks">
+              <label><input type="checkbox"> Parking</label>
+              <label><input type="checkbox"> Garage</label>
+              <label><input type="checkbox"> Terrasse</label>
+              <label><input type="checkbox"> Balcon</label>
+              <label><input type="checkbox"> Ascenseur</label>
+              <label><input type="checkbox"> Cave</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="e-nom">Nom et prénom *</label>
+            <input id="e-nom" type="text" required>
+          </div>
+          <div class="field">
+            <label for="e-tel">Téléphone *</label>
+            <input id="e-tel" type="tel" required>
+          </div>
+          <div class="field full">
+            <label for="e-email">Adresse e-mail *</label>
+            <input id="e-email" type="email" required>
+          </div>
+          <div class="field full">
+            <label for="e-message">Précisions utiles</label>
+            <textarea id="e-message" rows="4" placeholder="Travaux récents, particularités, échéance souhaitée…"></textarea>
+          </div>
+        </div>
+        <p style="margin-top:26px"><button class="btn btn-gold" type="submit">Demander mon estimation <span class="arrow">→</span></button></p>
+        <p class="form-note">* Champs obligatoires. Vos données ne servent qu'au traitement de votre demande, voir notre <a href="mentions-legales.html#confidentialite" style="color:var(--gold)">politique de confidentialité</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <p class="kicker">Vous préférez en parler ?</p>
+          <h2>Un conseiller du quartier vous <span class="gold-i">répond</span></h2>
+          <p>Sur rendez-vous, du lundi au vendredi, au 06 06 54 97 98, ou passez nous voir au 205 rue Pierre Legrand.</p>
+        </div>
+        <a class="btn btn-gold" href="contact.html">Nous contacter <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="footer-logo" href="index.html" aria-label="CLUBIM, accueil">
+            <img src="assets/logo/clubim-logo-blanc.svg" alt="CLUBIM, agence immobilière à Lille" width="240" height="105">
+          </a>
+          <p>Agence immobilière indépendante à Lille : location et vente dans toute la métropole. Honoraires de vente : 5 % TTC tout inclus.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/clubim.immo" target="_blank" rel="noopener noreferrer" aria-label="Facebook CLUBIM Immobilier">f</a>
+            <a href="https://www.instagram.com/clubim_immobilier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram clubim_immobilier">ig</a>
+            <a href="https://www.linkedin.com/in/maxime-allouchery-124648220/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div>
+          <h4>Nos services</h4>
+          <ul>
+            <li><a href="annonces.html?transaction=location">Louer</a></li>
+            <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+            <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+            <li><a href="dossier-locataire.html">Déposer mon dossier locataire</a></li>
+            <li><a href="tarifs.html">Nos tarifs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>L'agence</h4>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Nous trouver</h4>
+          <p><strong>CLUBIM</strong><br>205 rue Pierre Legrand<br>59800 Lille</p>
+          <p><strong>06 06 54 97 98</strong><br>maxime.allouchery59@gmail.com</p>
+          <p>Sur rendez-vous,<br>du lundi au vendredi</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="year"></span> CLUBIM. Tous droits réservés.</p>
+        <nav>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+          <a href="mentions-legales.html#cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cookies.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Déposer mon dossier locataire | CLUBIM</title>
+  <meta name="description" content="Candidat locataire : constituez votre dossier en ligne pour un bien CLUBIM. Vos pièces sont assemblées en un PDF unique, directement dans votre navigateur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container-wide">
+      <div class="topbar-contact">
+        <a href="tel:+33606549798">06 06 54 97 98</a>
+        <a href="mailto:maxime.allouchery59@gmail.com" class="hide-m"><span class="hide-m">maxime.allouchery59@gmail.com</span></a>
+      </div>
+      <div class="topbar-right">
+        <span class="hide-m">205 rue Pierre Legrand, Lille</span>
+        <a href="estimation.html">Estimation gratuite</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container-wide">
+      <a class="logo" href="index.html" aria-label="CLUBIM, accueil">
+        <img src="assets/logo/clubim-logo-court.svg" alt="CLUBIM, agence immobilière à Lille" width="146" height="50">
+      </a>
+      <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul class="main-nav">
+        <li><button class="nav-close" aria-label="Fermer le menu">×</button></li>
+        <li><a href="annonces.html?transaction=location">Louer</a></li>
+        <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+        <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li class="has-sub"><a href="a-propos.html">L'agence</a>
+          <ul class="sub-nav">
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+          </ul>
+        </li>
+        <li class="nav-cta"><a class="btn btn-gold" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="deco"></div>
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> / <a href="annonces.html?transaction=location">Louer</a> / Mon dossier</p>
+      <h1>Déposez votre dossier <span class="gold-i">locataire</span></h1>
+      <p>Renseignez vos informations, ajoutez vos pièces : votre dossier complet est assemblé en un seul PDF, prêt à nous être transmis. Un dossier complet est traité en priorité.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container" style="max-width:880px">
+
+      <div id="dossier-bien" class="dossier-bien reveal"></div>
+
+      <form class="form-card reveal" id="dossier-form" style="margin-top:30px">
+        <h3 style="margin-bottom:20px">Vos informations</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label for="d-nom">Nom et prénom *</label>
+            <input id="d-nom" type="text" required>
+          </div>
+          <div class="field">
+            <label for="d-tel">Téléphone *</label>
+            <input id="d-tel" type="tel" required>
+          </div>
+          <div class="field full">
+            <label for="d-email">Adresse e-mail *</label>
+            <input id="d-email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="d-situation">Situation professionnelle *</label>
+            <select id="d-situation" required>
+              <option value="">Sélectionner…</option>
+              <option>CDI</option>
+              <option>CDD</option>
+              <option>Indépendant / profession libérale</option>
+              <option>Fonctionnaire</option>
+              <option>Étudiant</option>
+              <option>Retraité</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="d-revenus">Revenus mensuels nets (foyer) *</label>
+            <input id="d-revenus" type="number" min="0" placeholder="ex : 2 300" required>
+          </div>
+          <div class="field full">
+            <label for="d-garant">Garant</label>
+            <select id="d-garant">
+              <option>Sans garant</option>
+              <option>Garant physique (famille, proche)</option>
+              <option>Autre dispositif</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 style="margin:38px 0 8px">Vos pièces justificatives</h3>
+        <p class="form-note" style="margin:0 0 18px">Formats acceptés : PDF, JPG, PNG. <strong>Ajoutez autant de fichiers que nécessaire pour chaque pièce</strong>, en plusieurs fois si besoin, chaque fichier peut être retiré individuellement. Vos documents <strong>ne sont envoyés sur aucun serveur</strong> : ils sont assemblés en PDF directement dans votre navigateur, et c'est vous qui nous transmettez le dossier final.</p>
+        <div id="docs-list"></div>
+
+        <p style="margin-top:30px"><button class="btn btn-gold" type="submit">Générer mon dossier PDF <span class="arrow">→</span></button></p>
+        <p class="form-note">* Champs et pièces obligatoires. Vos données ne servent qu'à l'étude de votre candidature, voir notre <a href="mentions-legales.html#confidentialite" style="color:var(--gold)">politique de confidentialité</a>.</p>
+
+        <div class="dossier-done" id="dossier-done" hidden>
+          <h3>Votre dossier est prêt !</h3>
+          <p>Le fichier <strong id="done-filename"></strong> vient d'être téléchargé sur votre appareil. Dernière étape : envoyez-le-nous.</p>
+          <p style="margin-top:18px"><a class="btn btn-gold" id="done-mailto" href="#">Envoyer mon dossier par e-mail <span class="arrow">→</span></a></p>
+          <p class="form-note">Le bouton ouvre votre messagerie avec l'objet pré-rempli : il ne reste qu'à <strong>joindre le PDF téléchargé</strong> et envoyer. Vous pouvez aussi nous l'apporter en agence, 205 rue Pierre Legrand.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <p class="kicker">Une question sur votre dossier ?</p>
+          <h2>Un doute sur une pièce ? <span class="gold-i">Appelez-nous</span></h2>
+          <p>Au 06 06 54 97 98, du lundi au vendredi, mieux vaut une question que dix allers-retours.</p>
+        </div>
+        <a class="btn btn-gold" href="tel:+33606549798">06 06 54 97 98</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="footer-logo" href="index.html" aria-label="CLUBIM, accueil">
+            <img src="assets/logo/clubim-logo-blanc.svg" alt="CLUBIM, agence immobilière à Lille" width="240" height="105">
+          </a>
+          <p>Agence immobilière indépendante à Lille : location et vente dans toute la métropole. Honoraires de vente : 5 % TTC tout inclus.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/clubim.immo" target="_blank" rel="noopener noreferrer" aria-label="Facebook CLUBIM Immobilier">f</a>
+            <a href="https://www.instagram.com/clubim_immobilier/" target="_blank" rel="noopener noreferrer" aria-label="Instagram clubim_immobilier">ig</a>
+            <a href="https://www.linkedin.com/in/maxime-allouchery-124648220/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+        <div>
+          <h4>Nos services</h4>
+          <ul>
+            <li><a href="annonces.html?transaction=location">Louer</a></li>
+            <li><a href="annonces.html?transaction=achat">Acheter</a></li>
+            <li><a href="estimation.html">Vendre &amp; estimer</a></li>
+            <li><a href="dossier-locataire.html">Déposer mon dossier locataire</a></li>
+            <li><a href="tarifs.html">Nos tarifs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>L'agence</h4>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="recrutement.html">Nous rejoindre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Nous trouver</h4>
+          <p><strong>CLUBIM</strong><br>205 rue Pierre Legrand<br>59800 Lille</p>
+          <p><strong>06 06 54 97 98</strong><br>maxime.allouchery59@gmail.com</p>
+          <p>Sur rendez-vous,<br>du lundi au vendredi</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span class="year"></span> CLUBIM. Tous droits réservés.</p>
+        <nav>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+          <a href="mentions-legales.html#cookies">Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dossier.js"></script>
+  <script src="js/cookies.js"></script>
+</body>
+</html>
