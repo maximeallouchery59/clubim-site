@@ -34,3 +34,7 @@ Tous les biens affichés sont dans `js/data.js`, tableau `LISTINGS`. Une entrée
 
 index, annonces, bien (fiche, `bien.html?id=<id>`), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, mentions-legales.
 Les actualités sont volontairement vides (`ARTICLES = []`) tant qu'elles ne sont pas réécrites avec de vrais sujets.
+
+## Cache des navigateurs
+
+Les pages appellent `css/style.css?v=AAAAMMJJx` et `js/*.js?v=AAAAMMJJx`. Après toute modification du CSS ou d'un JS, changer ce numéro dans toutes les pages (même valeur partout), sinon les téléphones gardent l'ancienne version en mémoire.
