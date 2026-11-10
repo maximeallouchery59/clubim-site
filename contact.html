@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact : Agence CLUBIM, Lille</title>
   <meta name="description" content="Contactez CLUBIM : 205 rue Pierre Legrand à Lille, 06 06 54 97 98. Location, vente, estimation : Maxime Allouchery vous répond sous 24 h ouvrées.">
@@ -9,10 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="css/style.css?v=20261110b">
+  <link rel="stylesheet" href="css/style.css?v=20261110c">
   <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <div class="topbar">
     <div class="container-wide">
@@ -51,6 +53,8 @@
     </div>
   </header>
 
+  <main id="contenu">
+
   <section class="page-hero">
     <div class="deco"></div>
     <div class="container">
@@ -83,19 +87,19 @@
         </div>
 
         <form class="form-card reveal" data-demo>
-          <div class="form-success">Merci pour votre message !<br>Maxime Allouchery vous recontacte sous 24 h ouvrées.</div>
+          <div class="form-success" role="status" aria-live="polite">Merci pour votre message !<br>Maxime Allouchery vous recontacte sous 24 h ouvrées.</div>
           <div class="form-grid">
             <div class="field">
               <label for="c-nom">Nom et prénom *</label>
-              <input id="c-nom" type="text" required>
+              <input id="c-nom" name="c-nom" autocomplete="name" type="text" required>
             </div>
             <div class="field">
               <label for="c-tel">Téléphone</label>
-              <input id="c-tel" type="tel">
+              <input id="c-tel" name="c-tel" autocomplete="tel" type="tel">
             </div>
             <div class="field full">
               <label for="c-email">Adresse e-mail *</label>
-              <input id="c-email" type="email" required>
+              <input id="c-email" name="c-email" autocomplete="email" spellcheck="false" type="email" required>
             </div>
             <div class="field full">
               <label for="c-sujet">Votre demande concerne *</label>
@@ -127,6 +131,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container">
@@ -179,9 +184,9 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=20261110b"></script>
-  <script src="js/main.js?v=20261110b"></script>
-  <script src="js/cookies.js?v=20261110b"></script>
+  <script src="js/data.js?v=20261110c"></script>
+  <script src="js/main.js?v=20261110c"></script>
+  <script src="js/cookies.js?v=20261110c"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     (function () {
@@ -199,7 +204,7 @@
       // Agence
       const agenceIcon = L.divIcon({
         className: "",
-        html: '<div class="map-agence"><svg viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7" stroke="#E9707C" stroke-width="1.6"/><rect x="6" y="11" width="12" height="9" stroke="#E9707C" stroke-width="1.6"/><rect x="10.5" y="14" width="3" height="6" fill="#BE3A48"/></svg><span>CLUBIM</span></div>',
+        html: '<div class="map-agence"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7" stroke="#E9707C" stroke-width="1.6"/><rect x="6" y="11" width="12" height="9" stroke="#E9707C" stroke-width="1.6"/><rect x="10.5" y="14" width="3" height="6" fill="#BE3A48"/></svg><span>CLUBIM</span></div>',
         iconSize: [110, 72],
         iconAnchor: [55, 50]
       });

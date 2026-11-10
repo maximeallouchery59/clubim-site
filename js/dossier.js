@@ -260,6 +260,7 @@
       if (!note) {
         note = document.createElement("p");
         note.className = "form-error";
+          note.setAttribute("role", "alert");
         form.querySelector("#docs-list").after(note);
       }
       note.textContent = "Pièces obligatoires manquantes : " + manquantes.map((d) => d.label).join(", ") + ".";
@@ -327,6 +328,7 @@
       if (!note) {
         note = document.createElement("p");
         note.className = "form-error";
+          note.setAttribute("role", "alert");
         form.appendChild(note);
       }
       note.textContent = "L'assemblage du PDF a échoué (" + err.message + "). Vérifiez vos fichiers ou envoyez vos pièces directement à maxime.allouchery59@gmail.com.";

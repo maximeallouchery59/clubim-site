@@ -1938,3 +1938,18 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, summary:focus-visible
 .promises { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 760px) { .promises { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { #quick-search .field { flex-basis: 100%; } }
+
+/* Correctifs d'accessibilité (audit du 10/11/2026) */
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 1000;
+  background: var(--navy); color: var(--paper); padding: 12px 20px; border-radius: 999px; font-weight: 500;
+}
+.skip-link:focus, .skip-link:focus-visible { top: 12px; color: var(--paper); }
+.bien-title { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+.bien-thumb {
+  flex-shrink: 0; padding: 0; border: 2px solid transparent; border-radius: 12px;
+  background: none; cursor: pointer; opacity: 0.65; transition: opacity 0.25s, border-color 0.25s;
+}
+.bien-thumb:hover, .bien-thumb.active { opacity: 1; border-color: var(--gold); }
+.bien-thumbs .bien-thumb img { width: 96px; height: 64px; object-fit: cover; border: none; border-radius: 10px; opacity: 1; display: block; }
+.split .art img { height: auto; }

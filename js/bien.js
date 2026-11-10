@@ -35,7 +35,7 @@
     <div class="bien-layout">
       <div>
         <div class="carousel-frame">
-          <img id="bien-main-img" src="${views[0]}" alt="${bien.titre}, photo 1">
+          <img id="bien-main-img" src="${views[0]}" alt="${bien.titre}, photo 1" width="1600" height="900" fetchpriority="high">
           ${views.length > 1 ? `
           <button class="carousel-nav prev" type="button" aria-label="Photo précédente">‹</button>
           <button class="carousel-nav next" type="button" aria-label="Photo suivante">›</button>
@@ -43,7 +43,7 @@
         </div>
         ${views.length > 1 ? `
         <div class="bien-thumbs">
-          ${views.map((v, i) => `<img src="${v}" data-i="${i}" class="${i === 0 ? "active" : ""}" alt="Miniature ${i + 1}" loading="lazy">`).join("")}
+          ${views.map((v, i) => `<button type="button" class="bien-thumb${i === 0 ? " active" : ""}" data-i="${i}" aria-label="Voir la photo ${i + 1}"${i === 0 ? ' aria-current="true"' : ""}><img src="${v}" alt="" width="96" height="64" loading="lazy"></button>`).join("")}
         </div>` : ""}
 
         ${bien.visite360 && bien.visite360.length ? `
@@ -55,7 +55,7 @@
 
         <div style="margin-top:46px">
           <p class="kicker">${bien.statut === "vendu" ? (bien.transaction === "location" ? "Loué par CLUBIM" : "Vendu par CLUBIM") : bien.transaction === "location" ? "À louer" : "À vendre"}</p>
-          <h2 class="serif" style="margin-bottom:18px">${bien.titre}</h2>
+          <h1 class="bien-title" style="margin-bottom:18px">${bien.titre}</h1>
           <div class="bien-desc">${bien.description.split(/\n\s*\n/).map((p) => `<p>${p}</p>`).join("")}</div>
 
           <h3 style="margin:36px 0 16px">Les atouts du bien</h3>
@@ -107,7 +107,7 @@
   // ---------- Carrousel ----------
   const mainImg = document.getElementById("bien-main-img");
   const counter = document.getElementById("carousel-i");
-  const thumbs = [...root.querySelectorAll(".bien-thumbs img")];
+  const thumbs = [...root.querySelectorAll(".bien-thumbs .bien-thumb")];
   let current = 0;
 
   function show(i) {
@@ -115,7 +115,7 @@
     mainImg.src = views[current];
     mainImg.alt = `${bien.titre}, photo ${current + 1}`;
     if (counter) counter.textContent = current + 1;
-    thumbs.forEach((t, j) => t.classList.toggle("active", j === current));
+    thumbs.forEach((t, j) => { t.classList.toggle("active", j === current); if (j === current) t.setAttribute("aria-current", "true"); else t.removeAttribute("aria-current"); });
     if (thumbs[current]) thumbs[current].scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
   }
 

@@ -2,16 +2,18 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estimation immobilière gratuite à Lille | CLUBIM</title>
   <meta name="description" content="Faites estimer votre maison ou appartement par CLUBIM : une analyse fondée sur les ventes réellement actées dans votre quartier, gratuite et sans engagement.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261110b">
+  <link rel="stylesheet" href="css/style.css?v=20261110c">
   <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <div class="topbar">
     <div class="container-wide">
@@ -49,6 +51,8 @@
       </ul>
     </div>
   </header>
+
+  <main id="contenu">
 
   <section class="page-hero">
     <div class="deco"></div>
@@ -93,7 +97,7 @@
         <h2>Parlez-nous de <span class="gold-i">votre bien</span></h2>
       </div>
       <form class="form-card" data-demo>
-        <div class="form-success">Merci ! Votre demande d'estimation a bien été enregistrée.<br>Maxime Allouchery vous recontacte sous 24 h ouvrées.</div>
+        <div class="form-success" role="status" aria-live="polite">Merci ! Votre demande d'estimation a bien été enregistrée.<br>Maxime Allouchery vous recontacte sous 24 h ouvrées.</div>
         <div class="form-grid">
           <div class="field">
             <label for="e-type">Type de bien *</label>
@@ -119,7 +123,7 @@
           </div>
           <div class="field full">
             <label for="e-adresse">Adresse du bien *</label>
-            <input id="e-adresse" type="text" placeholder="N°, rue, commune" required>
+            <input id="e-adresse" name="e-adresse" autocomplete="street-address" type="text" placeholder="N°, rue, commune" required>
           </div>
           <div class="field">
             <label for="e-surface">Surface habitable (m²) *</label>
@@ -155,15 +159,15 @@
           </div>
           <div class="field">
             <label for="e-nom">Nom et prénom *</label>
-            <input id="e-nom" type="text" required>
+            <input id="e-nom" name="e-nom" autocomplete="name" type="text" required>
           </div>
           <div class="field">
             <label for="e-tel">Téléphone *</label>
-            <input id="e-tel" type="tel" required>
+            <input id="e-tel" name="e-tel" autocomplete="tel" type="tel" required>
           </div>
           <div class="field full">
             <label for="e-email">Adresse e-mail *</label>
-            <input id="e-email" type="email" required>
+            <input id="e-email" name="e-email" autocomplete="email" spellcheck="false" type="email" required>
           </div>
           <div class="field full">
             <label for="e-message">Précisions utiles</label>
@@ -188,6 +192,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container">
@@ -240,8 +245,8 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=20261110b"></script>
-  <script src="js/main.js?v=20261110b"></script>
-  <script src="js/cookies.js?v=20261110b"></script>
+  <script src="js/data.js?v=20261110c"></script>
+  <script src="js/main.js?v=20261110c"></script>
+  <script src="js/cookies.js?v=20261110c"></script>
 </body>
 </html>

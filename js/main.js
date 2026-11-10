@@ -49,7 +49,7 @@ function listingCardHTML(l, seed = 0) {
   return `
     <a class="listing-card reveal" href="bien.html?id=${l.id}">
       <div class="listing-media">
-        <img src="${listingMediaSrc(l, seed)}" alt="${l.titre}, ${l.ville}" loading="lazy">
+        <img src="${listingMediaSrc(l, seed)}" alt="${l.titre}, ${l.ville}" width="800" height="600" loading="lazy">
         ${tag}
       </div>
       <div class="listing-body">
@@ -68,7 +68,7 @@ function articleCardHTML(a, seed = 0) {
   return `
     <article class="news-card reveal">
       <a class="news-media" href="article.html?id=${a.id}">
-        <img src="${buildingArt(a.art.style, a.art.palette, seed + 5)}" alt="" loading="lazy">
+        <img src="${buildingArt(a.art.style, a.art.palette, seed + 5)}" alt="" width="800" height="600" loading="lazy">
       </a>
       <div class="news-body">
         <p class="news-date">${a.categorie}, ${a.date}</p>
@@ -182,6 +182,7 @@ document.querySelectorAll("form[data-demo]").forEach((form) => {
         if (!note) {
           note = document.createElement("p");
           note.className = "form-error";
+          note.setAttribute("role", "alert");
           form.appendChild(note);
         }
         note.textContent = "L'envoi a échoué, vérifiez votre connexion et réessayez, ou appelez-nous au 06 06 54 97 98.";

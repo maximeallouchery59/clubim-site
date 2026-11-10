@@ -2,16 +2,18 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Déposer mon dossier locataire | CLUBIM</title>
   <meta name="description" content="Candidat locataire : constituez votre dossier en ligne pour un bien CLUBIM. Vos pièces sont assemblées en un PDF unique, directement dans votre navigateur.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261110b">
+  <link rel="stylesheet" href="css/style.css?v=20261110c">
   <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <div class="topbar">
     <div class="container-wide">
@@ -50,6 +52,8 @@
     </div>
   </header>
 
+  <main id="contenu">
+
   <section class="page-hero">
     <div class="deco"></div>
     <div class="container">
@@ -69,15 +73,15 @@
         <div class="form-grid">
           <div class="field">
             <label for="d-nom">Nom et prénom *</label>
-            <input id="d-nom" type="text" required>
+            <input id="d-nom" name="d-nom" autocomplete="name" type="text" required>
           </div>
           <div class="field">
             <label for="d-tel">Téléphone *</label>
-            <input id="d-tel" type="tel" required>
+            <input id="d-tel" name="d-tel" autocomplete="tel" type="tel" required>
           </div>
           <div class="field full">
             <label for="d-email">Adresse e-mail *</label>
-            <input id="d-email" type="email" required>
+            <input id="d-email" name="d-email" autocomplete="email" spellcheck="false" type="email" required>
           </div>
           <div class="field">
             <label for="d-situation">Situation professionnelle *</label>
@@ -135,6 +139,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container">
@@ -188,9 +193,9 @@
   </footer>
 
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-  <script src="js/data.js?v=20261110b"></script>
-  <script src="js/main.js?v=20261110b"></script>
-  <script src="js/dossier.js?v=20261110b"></script>
-  <script src="js/cookies.js?v=20261110b"></script>
+  <script src="js/data.js?v=20261110c"></script>
+  <script src="js/main.js?v=20261110c"></script>
+  <script src="js/dossier.js?v=20261110c"></script>
+  <script src="js/cookies.js?v=20261110c"></script>
 </body>
 </html>
