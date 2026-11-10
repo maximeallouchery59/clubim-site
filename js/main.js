@@ -86,7 +86,7 @@ function observeNew(container) {
 // ---------- Accueil : biens à la une ----------
 const featured = document.getElementById("featured-listings");
 if (featured) {
-  const selection = LISTINGS.filter((l) => l.statut !== "vendu").slice(0, 3);
+  const selection = LISTINGS.filter((l) => l.statut !== "vendu" && l.id !== featured.dataset.exclude).slice(0, 3);
   featured.innerHTML = selection.map((l, i) => listingCardHTML(l, i)).join("");
   observeNew(featured);
 }
