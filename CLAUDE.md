@@ -32,8 +32,16 @@ Tous les biens affichés sont dans `js/data.js`, tableau `LISTINGS`. Une entrée
 
 ## Pages
 
-index, annonces, bien (fiche, `bien.html?id=<id>`), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, mentions-legales.
-Les actualités sont volontairement vides (`ARTICLES = []`) tant qu'elles ne sont pas réécrites avec de vrais sujets.
+index, annonces, bien (fiche, `bien.html?id=<id>`), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, actualites, mentions-legales.
+
+## Actualités (« le journal »)
+
+- Hub : `actualites.html` (grille de tuiles `.j-tile`, une tuile par article avec sa mini-illustration d'objet). Articles : une page statique par article à la racine, `actu-<sujet>.html`, styles dans `css/journal.css`, interactions (compte à rebours, calculatrice, quiz) dans `js/journal.js`.
+- Principe validé par Maxime le 10/11/2026 : chaque article prend la forme d'un **objet du quotidien détourné** (compte à rebours, bulletin météo, récap de série, calculatrice, ticket de caisse, quiz…), ton léger, faits réels. Ne pas réutiliser le même objet deux mois de suite.
+- Chaque article : chapô, objet mis en scène (`.j-stage`), 2 ou 3 intertitres courts, un encadré « Notre conseil » (`.j-aside`), les **sources** (`.j-sources`, liens vers les articles d'origine) et les boutons de fin. Aucun chiffre sans source. Pas de DPE comme sujet, pas de gestion locative.
+- En publiant ou retirant un article : mettre à jour la tuile du hub, la date d'édition et le nombre d'articles, le quiz s'il cite l'article, et `sitemap.xml`. Un article périmé (ex. compte à rebours passé) est mis à jour ou retiré.
+- Le gabarit des pages (en-tête, pied, balises de partage) est celui des autres pages : copier une page existante.
+- Les anciennes actualités `ARTICLES` de `js/data.js` restent vides et inutilisées.
 
 ## Cache des navigateurs
 
