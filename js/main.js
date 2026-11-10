@@ -141,7 +141,7 @@ if (quickSearch) {
 // Clé d'accès Web3Forms (https://web3forms.com — gratuit) : créer la clé avec
 // l'adresse maxime.allouchery59@gmail.com et la coller ci-dessous. Tant qu'elle est vide,
 // les formulaires fonctionnent en mode démonstration (aucun envoi).
-const WEB3FORMS_KEY = "";
+const WEB3FORMS_KEY = "6d9df284-a10d-45d5-81ca-f62897ae05a3";
 
 document.querySelectorAll("form[data-demo]").forEach((form) => {
   form.addEventListener("submit", async (e) => {
