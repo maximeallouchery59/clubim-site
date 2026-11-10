@@ -1066,7 +1066,7 @@ h3 { font-size: 1.35rem; }
 
 /* ---------- Avis clients ---------- */
 
-.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: stretch; }
+.reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; align-items: stretch; }
 .review-card {
   background: var(--paper);
   border: 1px solid var(--line);
