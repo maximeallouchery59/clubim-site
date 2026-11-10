@@ -179,7 +179,7 @@ const LISTINGS = [
     transaction: "location",
     ville: "Lille, Vauban",
     prix: 100,
-    art: { style: "moderne", palette: "navy" },
+    art: { style: "parking", palette: "cream" },
     description:
       "Rue Meurein, à l'angle du boulevard Vauban, une place de parking en sous-sol pour une voiture, avec accès par portail automatique et bip.\n\nGabarit accepté jusqu'au SUV ou au petit utilitaire de type Kangoo. Les grands fourgons ne passent pas. Aucun dossier demandé : seule la taille du véhicule compte. Disponible immédiatement.",
     atouts: ["Parking souterrain sécurisé", "Portail automatique avec bip", "Jusqu'au SUV ou petit utilitaire", "Disponible immédiatement"],
@@ -194,129 +194,124 @@ const LISTINGS = [
 const ARTICLES = []; // actualités retirées tant qu'elles ne sont pas réécrites avec de vrais sujets
 
 /* ============================================================
-   Générateur d'illustrations SVG — façades géométriques
-   aux couleurs CLUBIM (gris / rouge)
+   Générateur d'illustrations SVG : façades douces et arrondies
+   aux couleurs CLUBIM (refonte du 10/11/2026 : fond crème,
+   traits gris clair, touches de rouge adouci, plus de fond noir)
    ============================================================ */
 
 const ART_PALETTES = {
-  navy: { bg: "#2B2B2B", bg2: "#262626", line: "#BE3A48", fill: "#353535", accent: "#E9707C", glow: "rgba(233,112,124,0.45)" },
-  cream: { bg: "#F4F3F1", bg2: "#ECEAE7", line: "#2B2B2B", fill: "#E6E3DF", accent: "#BE3A48", glow: "rgba(43,43,43,0.25)" }
+  // « navy » est gardé comme nom pour compatibilité : il donne désormais la variante rosée
+  navy:  { bg: "#F7EEEF", sun: "#F1D9DC", hill: "#EFE2E3", wall: "#FFFFFF", roof: "#E7B9BF", line: "#D8CBC8", win: "#F4ECEA", lit: "#F6D7DB", accent: "#C9505D", tree: "#E3D6D4" },
+  cream: { bg: "#F6F3F1", sun: "#F2DFE1", hill: "#ECE6E2", wall: "#FFFFFF", roof: "#DCCFCB", line: "#D6CCC8", win: "#F3EEEB", lit: "#F6D7DB", accent: "#C9505D", tree: "#E2DAD6" }
 };
 
-function _windows(x, y, cols, rows, w, h, gapX, gapY, color, litColor, seed) {
+function _windows(x, y, cols, rows, w, h, gapX, gapY, p, seed) {
   let s = "";
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       const lit = ((r * 7 + c * 13 + seed) % 5) === 0;
-      s += `<rect x="${x + c * (w + gapX)}" y="${y + r * (h + gapY)}" width="${w}" height="${h}" fill="${lit ? litColor : "none"}" stroke="${color}" stroke-width="1.2"/>`;
+      s += `<rect x="${x + c * (w + gapX)}" y="${y + r * (h + gapY)}" width="${w}" height="${h}" rx="7" fill="${lit ? p.lit : p.win}" stroke="${p.line}" stroke-width="1.5"/>`;
     }
   }
   return s;
 }
 
+function _door(x, y, w, h, p) {
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w / 2}" ry="${w / 2}" fill="${p.accent}" opacity="0.85"/>` +
+    `<rect x="${x}" y="${y + h - w / 2}" width="${w}" height="${w / 2}" fill="${p.accent}" opacity="0.85"/>`;
+}
+
+function _tree(x, y, r, p) {
+  return `<rect x="${x - 3}" y="${y}" width="6" height="${r * 1.4}" rx="3" fill="${p.line}"/>` +
+    `<circle cx="${x}" cy="${y}" r="${r}" fill="${p.tree}"/>`;
+}
+
 function buildingArt(style, paletteName, seed = 0) {
-  const p = ART_PALETTES[paletteName] || ART_PALETTES.navy;
+  const p = ART_PALETTES[paletteName] || ART_PALETTES.cream;
   const W = 800, H = 600;
+  const wall = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="${p.wall}" stroke="${p.line}" stroke-width="2"/>`;
+  const roof = (pts) => `<polygon points="${pts}" fill="${p.roof}" stroke="${p.line}" stroke-width="2" stroke-linejoin="round"/>`;
   let scene = "";
 
-  // fond + horizon
+  // fond, soleil et colline douces
   scene += `<rect width="${W}" height="${H}" fill="${p.bg}"/>`;
-  scene += `<rect width="${W}" height="${H}" fill="url(#grad${seed})" opacity="0.5"/>`;
-  scene += `<line x1="0" y1="470" x2="${W}" y2="470" stroke="${p.line}" stroke-width="1" opacity="0.6"/>`;
-  // astre géométrique
-  scene += `<g transform="translate(640,130) rotate(45)"><rect x="-34" y="-34" width="68" height="68" fill="none" stroke="${p.accent}" stroke-width="1.4"/><rect x="-18" y="-18" width="36" height="36" fill="${p.accent}" opacity="0.85"/></g>`;
-
-  const L = p.line, A = p.accent, F = p.fill, G = p.glow;
+  scene += `<circle cx="${610 + (seed % 3) * 20}" cy="150" r="72" fill="${p.sun}"/>`;
+  scene += `<ellipse cx="400" cy="560" rx="560" ry="120" fill="${p.hill}"/>`;
 
   switch (style) {
     case "hotel":
-      scene += `<rect x="240" y="200" width="320" height="270" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="240,200 400,130 560,200" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += _windows(270, 230, 4, 3, 48, 56, 22, 24, L, G, seed);
-      scene += `<rect x="372" y="392" width="56" height="78" fill="none" stroke="${A}" stroke-width="2"/>`;
-      scene += `<path d="M372 392 a28 28 0 0 1 56 0" fill="none" stroke="${A}" stroke-width="2"/>`;
-      scene += `<rect x="180" y="330" width="60" height="140" fill="${F}" stroke="${L}" stroke-width="1.5"/><rect x="560" y="330" width="60" height="140" fill="${F}" stroke="${L}" stroke-width="1.5"/>`;
+      scene += roof("230,210 400,140 570,210");
+      scene += wall(240, 205, 320, 265);
+      scene += _windows(270, 235, 4, 3, 48, 52, 22, 22, p, seed);
+      scene += _door(374, 400, 52, 70, p);
+      scene += wall(180, 330, 60, 140) + wall(560, 330, 60, 140);
       break;
     case "haussmann":
-      scene += `<rect x="220" y="150" width="360" height="320" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="220" y="150" width="360" height="34" fill="none" stroke="${L}" stroke-width="2"/>`;
-      scene += `<line x1="220" y1="280" x2="580" y2="280" stroke="${L}" stroke-width="1" opacity="0.7"/>`;
-      scene += _windows(248, 204, 5, 4, 42, 50, 25, 18, L, G, seed);
-      scene += `<rect x="236" y="262" width="328" height="6" fill="none" stroke="${A}" stroke-width="1"/>`;
+      scene += wall(220, 150, 360, 320);
+      scene += `<rect x="220" y="150" width="360" height="34" rx="14" fill="${p.roof}" stroke="${p.line}" stroke-width="2"/>`;
+      scene += _windows(248, 204, 5, 4, 42, 48, 25, 18, p, seed);
       break;
     case "villa":
-      scene += `<polygon points="200,300 360,190 520,300" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="220" y="300" width="280" height="170" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="520" y="340" width="140" height="130" fill="${F}" stroke="${L}" stroke-width="1.5"/>`;
-      scene += _windows(250, 330, 3, 2, 52, 48, 28, 26, L, G, seed);
-      scene += `<rect x="548" y="368" width="84" height="46" fill="none" stroke="${L}" stroke-width="1.2"/>`;
-      scene += `<rect x="350" y="392" width="50" height="78" fill="none" stroke="${A}" stroke-width="2"/>`;
-      scene += `<circle cx="360" cy="240" r="0"/><polygon points="354,212 360,200 366,212 360,224" fill="${A}"/>`;
+      scene += roof("200,305 360,195 520,305");
+      scene += wall(220, 300, 280, 170);
+      scene += wall(520, 345, 140, 125);
+      scene += _windows(250, 330, 3, 1, 52, 48, 28, 0, p, seed);
+      scene += `<rect x="548" y="372" width="84" height="44" rx="7" fill="${p.win}" stroke="${p.line}" stroke-width="1.5"/>`;
+      scene += _door(352, 396, 46, 74, p);
+      scene += _tree(150, 400, 34, p);
       break;
     case "loft":
-      scene += `<rect x="180" y="280" width="440" height="190" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="180,280 250,225 250,280" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="290,280 360,225 360,280" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="400,280 470,225 470,280" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="510,280 580,225 580,280" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += _windows(210, 310, 6, 2, 52, 56, 14, 18, L, G, seed);
+      scene += wall(180, 280, 440, 190);
+      for (const x of [180, 290, 400, 510]) scene += roof(`${x},282 ${x + 70},228 ${x + 70},282`);
+      scene += _windows(210, 310, 6, 2, 52, 52, 14, 18, p, seed);
       break;
     case "bourgeoise":
-      scene += `<rect x="270" y="190" width="260" height="280" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="270,190 400,120 530,190" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="380" y="92" width="40" height="60" fill="${F}" stroke="${L}" stroke-width="1.5"/>`;
-      scene += _windows(296, 220, 3, 3, 52, 56, 26, 22, L, G, seed);
-      scene += `<rect x="372" y="396" width="56" height="74" fill="none" stroke="${A}" stroke-width="2"/>`;
-      break;
-    case "moderne":
-      scene += `<rect x="230" y="240" width="220" height="230" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="450" y="180" width="160" height="290" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="410" y="300" width="40" height="170" fill="none" stroke="${L}" stroke-width="1.2"/>`;
-      scene += _windows(255, 270, 3, 3, 50, 44, 22, 22, L, G, seed);
-      scene += _windows(472, 208, 2, 4, 50, 44, 24, 20, L, G, seed + 2);
-      scene += `<line x1="230" y1="240" x2="610" y2="240" stroke="${A}" stroke-width="1" opacity="0.7"/>`;
+      scene += `<rect x="382" y="96" width="36" height="60" rx="6" fill="${p.wall}" stroke="${p.line}" stroke-width="2"/>`;
+      scene += roof("262,195 400,120 538,195");
+      scene += wall(270, 190, 260, 280);
+      scene += _windows(296, 220, 3, 3, 52, 52, 26, 22, p, seed);
+      scene += _door(374, 398, 52, 72, p);
+      scene += _tree(600, 410, 38, p);
       break;
     case "tour":
-      scene += `<rect x="330" y="110" width="150" height="360" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<polygon points="330,110 405,70 480,110" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="210" y="280" width="120" height="190" fill="${F}" stroke="${L}" stroke-width="1.5"/>`;
-      scene += `<rect x="480" y="320" width="130" height="150" fill="${F}" stroke="${L}" stroke-width="1.5"/>`;
-      scene += _windows(348, 140, 3, 6, 32, 36, 17, 16, L, G, seed);
-      scene += _windows(228, 306, 2, 3, 38, 36, 24, 18, L, G, seed + 1);
+      scene += wall(330, 110, 150, 360);
+      scene += wall(210, 280, 120, 190) + wall(480, 320, 130, 150);
+      scene += _windows(348, 140, 3, 6, 32, 34, 17, 16, p, seed);
+      scene += _windows(228, 306, 2, 3, 38, 34, 24, 18, p, seed + 1);
       break;
     case "immeuble":
-      scene += `<rect x="250" y="160" width="300" height="310" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="250" y="160" width="300" height="28" fill="none" stroke="${L}" stroke-width="2"/>`;
-      scene += _windows(276, 208, 4, 4, 44, 44, 26, 18, L, G, seed);
-      scene += `<rect x="372" y="406" width="56" height="64" fill="none" stroke="${A}" stroke-width="2"/>`;
+      scene += wall(250, 160, 300, 310);
+      scene += _windows(276, 200, 4, 4, 44, 44, 26, 18, p, seed);
+      scene += _door(374, 404, 52, 66, p);
       break;
     case "local":
-      scene += `<rect x="220" y="240" width="360" height="230" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="220" y="240" width="360" height="44" fill="none" stroke="${A}" stroke-width="2"/>`;
-      scene += `<rect x="244" y="316" width="200" height="154" fill="${G}" stroke="${L}" stroke-width="1.5" fill-opacity="0.25"/>`;
-      scene += `<line x1="294" y1="316" x2="294" y2="470" stroke="${L}" stroke-width="1"/><line x1="344" y1="316" x2="344" y2="470" stroke="${L}" stroke-width="1"/><line x1="394" y1="316" x2="394" y2="470" stroke="${L}" stroke-width="1"/>`;
-      scene += `<rect x="476" y="346" width="70" height="124" fill="none" stroke="${A}" stroke-width="2"/>`;
+      scene += wall(220, 240, 360, 230);
+      scene += `<rect x="220" y="240" width="360" height="44" rx="14" fill="${p.roof}" stroke="${p.line}" stroke-width="2"/>`;
+      scene += `<rect x="244" y="312" width="200" height="158" rx="10" fill="${p.win}" stroke="${p.line}" stroke-width="1.5"/>`;
+      scene += _door(478, 344, 66, 126, p);
       break;
+    case "parking":
+      // entrée de parking souterrain : rampe, porte et panneau P
+      scene += wall(170, 250, 460, 220);
+      scene += `<rect x="250" y="330" width="300" height="140" rx="16" fill="${p.win}" stroke="${p.line}" stroke-width="2"/>`;
+      for (let i = 0; i < 5; i++) scene += `<line x1="266" y1="${352 + i * 22}" x2="534" y2="${352 + i * 22}" stroke="${p.line}" stroke-width="2" stroke-linecap="round"/>`;
+      scene += `<path d="M230 470 Q400 520 570 470" fill="none" stroke="${p.line}" stroke-width="2"/>`;
+      scene += `<rect x="572" y="170" width="8" height="160" rx="4" fill="${p.line}"/>`;
+      scene += `<rect x="536" y="120" width="80" height="80" rx="18" fill="${p.accent}" opacity="0.9"/>`;
+      scene += `<text x="576" y="178" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="52" font-weight="600" fill="#FFFFFF">P</text>`;
+      break;
+    case "moderne":
     case "contemporaine":
     default:
-      scene += `<rect x="200" y="300" width="400" height="170" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += `<rect x="320" y="210" width="200" height="90" fill="${F}" stroke="${L}" stroke-width="2"/>`;
-      scene += _windows(226, 330, 5, 2, 56, 50, 18, 22, L, G, seed);
-      scene += _windows(344, 234, 3, 1, 46, 44, 22, 0, L, G, seed + 3);
-      scene += `<line x1="200" y1="300" x2="600" y2="300" stroke="${A}" stroke-width="1.2"/>`;
+      scene += wall(230, 240, 220, 230);
+      scene += wall(450, 180, 160, 290);
+      scene += _windows(255, 270, 3, 3, 50, 42, 22, 22, p, seed);
+      scene += _windows(472, 208, 2, 4, 50, 44, 24, 20, p, seed + 2);
+      scene += _door(316, 400, 48, 70, p);
       break;
   }
 
-  // sol — reflets
-  scene += `<line x1="120" y1="500" x2="330" y2="500" stroke="${L}" stroke-width="1" opacity="0.35"/>`;
-  scene += `<line x1="420" y1="522" x2="690" y2="522" stroke="${L}" stroke-width="1" opacity="0.25"/>`;
-
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}">` +
-    `<defs><linearGradient id="grad${seed}" x1="0" y1="0" x2="0" y2="1">` +
-    `<stop offset="0" stop-color="${p.bg2}"/><stop offset="1" stop-color="${p.bg}"/>` +
-    `</linearGradient></defs>${scene}</svg>`;
-
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}">${scene}</svg>`;
   return "data:image/svg+xml," + encodeURIComponent(svg);
 }
 
