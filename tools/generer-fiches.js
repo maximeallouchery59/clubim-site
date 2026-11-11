@@ -121,10 +121,38 @@ for (const b of LISTINGS) {
   pages.push(file);
 }
 
+// Pages villes (immobilier-*.html) : cartes statiques des biens de la commune
+const carte = (b) => {
+  const img = b.photos && b.photos.length ? b.photos[0] : "assets/og-clubim.jpg";
+  const specs = [b.surface ? `${b.surface.toLocaleString("fr-FR")} m²` : null, b.pieces ? `${b.pieces} pièce${b.pieces > 1 ? "s" : ""}` : null, b.dpe ? `DPE ${b.dpe}` : null]
+    .filter(Boolean).map((x) => `<span>${x}</span>`).join("");
+  return `
+        <a class="listing-card" href="bien-${b.id}.html">
+          <div class="listing-media"><img src="${img}" alt="${esc(b.titre)}, ${esc(b.ville)}" width="800" height="600" loading="lazy"><span class="listing-tag">${b.transaction === "location" ? "À louer" : "À vendre"}</span></div>
+          <div class="listing-body">
+            <p class="listing-city">${esc(b.ville)}</p>
+            <h3>${esc(b.titre)}</h3>
+            <div class="listing-specs">${specs}</div>
+            <div class="listing-price"><strong>${b.prix.toLocaleString("fr-FR", { maximumFractionDigits: 2 })} €${b.transaction === "location" ? " / mois" : ""}</strong><span>${b.transaction === "location" ? "charges comprises" : "honoraires inclus"}</span></div>
+          </div>
+        </a>`;
+};
+const villes = [];
+for (const f of fs.readdirSync(ROOT).filter((f) => /^immobilier-.+\.html$/.test(f))) {
+  let h = fs.readFileSync(path.join(ROOT, f), "utf8");
+  h = h.replace(/<!--LISTINGS:(.+?)-->[\s\S]*?<!--\/LISTINGS-->/g, (m, v) => {
+    const sel = LISTINGS.filter((b) => b.statut !== "vendu" && villeCourte(b.ville) === v);
+    const inner = sel.length ? sel.map(carte).join("") : `\n        <p>Aucun bien disponible en ce moment à ${v}. Appelez-nous au 06 06 54 97 98 : de nouveaux biens arrivent régulièrement.</p>`;
+    return `<!--LISTINGS:${v}-->${inner}\n      <!--/LISTINGS-->`;
+  });
+  fs.writeFileSync(path.join(ROOT, f), h);
+  villes.push(f);
+}
+
 // sitemap.xml : retire les anciennes fiches, ajoute les nouvelles
 const smPath = path.join(ROOT, "sitemap.xml");
-let sm = fs.readFileSync(smPath, "utf8").replace(/\s*<url><loc>https:\/\/clubim\.fr\/bien-[^<]+<\/loc>.*?<\/url>/g, "");
-const lines = pages.map((f) => `  <url><loc>${SITE}${f}</loc><lastmod>${today}</lastmod><priority>0.8</priority></url>`).join("\n");
+let sm = fs.readFileSync(smPath, "utf8").replace(/\s*<url><loc>https:\/\/clubim\.fr\/(bien|immobilier)-[^<]+<\/loc>.*?<\/url>/g, "");
+const lines = villes.map((f) => `  <url><loc>${SITE}${f}</loc><lastmod>${today}</lastmod><priority>0.9</priority></url>`).concat(pages.map((f) => `  <url><loc>${SITE}${f}</loc><lastmod>${today}</lastmod><priority>0.8</priority></url>`)).join("\n");
 sm = sm.replace("</urlset>", `${lines}\n</urlset>`);
 fs.writeFileSync(smPath, sm);
 

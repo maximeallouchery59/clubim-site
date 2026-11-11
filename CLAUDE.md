@@ -33,7 +33,7 @@ Tous les biens affichés sont dans `js/data.js`, tableau `LISTINGS`. Une entrée
 
 ## Pages
 
-index, annonces, fiches des biens (`bien-<id>.html`, générées ; l'ancienne adresse `bien.html?id=<id>` renvoie vers la fiche et n'est pas indexée), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, actualites, mentions-legales.
+index, annonces, pages villes (`immobilier-<ville>.html`), fiches des biens (`bien-<id>.html`, générées ; l'ancienne adresse `bien.html?id=<id>` renvoie vers la fiche et n'est pas indexée), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, actualites, mentions-legales.
 
 ## Actualités (« le journal »)
 
@@ -54,3 +54,4 @@ Les pages appellent `css/style.css?v=AAAAMMJJx` et `js/*.js?v=AAAAMMJJx`. Après
 - Données structurées : `RealEstateAgent` (accueil, contact), `RealEstateListing` + fil d'Ariane (fiches des biens, générées), `NewsArticle` (articles d'actualité : mettre à jour `dateModified` quand un article change).
 - `sitemap.xml` liste toutes les pages publiques ; le script des fiches gère les lignes `bien-…`. Ajouter à la main les nouvelles pages et articles.
 - Les liens internes vers un bien pointent vers `bien-<id>.html`.
+- Pages villes : `immobilier-lille.html`, `immobilier-roubaix.html`, `immobilier-mons-en-baroeul.html` (liens dans le pied de page de toutes les pages). Leurs cartes de biens sont entre les balises `<!--LISTINGS:Ville-->` et `<!--/LISTINGS-->` et sont remplies par `node tools/generer-fiches.js` (biens dont la commune, avant la virgule de `ville`, correspond). Ne pas écrire de cartes à la main. Faits sur la ville (transports, encadrement) : uniquement sourcés, sources en bas de page.
