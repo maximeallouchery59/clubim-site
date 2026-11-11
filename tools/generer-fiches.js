@@ -97,7 +97,7 @@ for (const b of LISTINGS) {
         <p class="kicker">${b.transaction === "location" ? "À louer" : "À vendre"} · ${esc(b.ville)}</p>
         <h1 class="bien-title">${esc(b.titre)}</h1>
         <p><strong>${esc(prixTxt(b))}</strong>${b.surface ? ` · ${b.surface} m²` : ""}${b.dpe ? ` · DPE ${b.dpe}` : ""}</p>
-        ${b.photos && b.photos.length ? `<img src="${b.photos[0]}" alt="${esc(b.titre)}, ${esc(b.ville)}" width="1600" height="900">` : ""}
+        ${b.photos && b.photos.length ? `<img src="${b.photos[0]}" alt="${esc(b.titre)}, ${esc(b.ville)}" width="1600" height="900" fetchpriority="high">` : ""}
         ${b.description.split(/\n\s*\n/).map((p) => `<p>${esc(p)}</p>`).join("\n        ")}
         ${b.atouts && b.atouts.length ? `<ul>${b.atouts.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
         ${b.mentions && b.mentions.length ? `<ul class="bien-mentions">${b.mentions.map((m) => `<li>${esc(m)}</li>`).join("")}</ul>` : ""}

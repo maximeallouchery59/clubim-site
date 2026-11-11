@@ -1953,3 +1953,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, summary:focus-visible
 .bien-thumb:hover, .bien-thumb.active { opacity: 1; border-color: var(--gold); }
 .bien-thumbs .bien-thumb img { width: 96px; height: 64px; object-fit: cover; border: none; border-radius: 10px; opacity: 1; display: block; }
 .split .art img { height: auto; }
+
+/* Revue Web Interface Guidelines (11/11/2026) */
+[id] { scroll-margin-top: 110px; }
+.chatbot-input:focus-within { box-shadow: inset 0 0 0 2px var(--gold); }

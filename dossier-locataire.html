@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261111a">
+  <link rel="stylesheet" href="css/style.css?v=20261111b">
   <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
 </head>
 <body>
@@ -98,7 +98,7 @@
           </div>
           <div class="field">
             <label for="d-situation">Situation professionnelle *</label>
-            <select id="d-situation" required>
+            <select id="d-situation" name="d-situation" required>
               <option value="">Sélectionner…</option>
               <option>CDI</option>
               <option>CDD</option>
@@ -111,11 +111,11 @@
           </div>
           <div class="field">
             <label for="d-revenus">Revenus mensuels nets (foyer) *</label>
-            <input id="d-revenus" type="number" min="0" placeholder="ex : 2 300" required>
+            <input id="d-revenus" name="d-revenus" type="number" inputmode="numeric" min="0" placeholder="ex : 2 300…" required>
           </div>
           <div class="field full">
             <label for="d-garant">Garant</label>
-            <select id="d-garant">
+            <select id="d-garant" name="d-garant">
               <option>Sans garant</option>
               <option>Garant physique (famille, proche)</option>
               <option>Autre dispositif</option>
@@ -209,9 +209,9 @@
   </footer>
 
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-  <script src="js/data.js?v=20261111a"></script>
-  <script src="js/main.js?v=20261111a"></script>
-  <script src="js/dossier.js?v=20261111a"></script>
-  <script src="js/cookies.js?v=20261111a"></script>
+  <script src="js/data.js?v=20261111b"></script>
+  <script src="js/main.js?v=20261111b"></script>
+  <script src="js/dossier.js?v=20261111b"></script>
+  <script src="js/cookies.js?v=20261111b"></script>
 </body>
 </html>

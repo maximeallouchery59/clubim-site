@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261111a">
+  <link rel="stylesheet" href="css/style.css?v=20261111b">
   <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
 </head>
 <body>
@@ -114,7 +114,7 @@
         <div class="form-grid">
           <div class="field">
             <label for="e-type">Type de bien *</label>
-            <select id="e-type" required>
+            <select id="e-type" name="e-type" required>
               <option value="">Sélectionner…</option>
               <option>Maison</option>
               <option>Appartement</option>
@@ -126,7 +126,7 @@
           </div>
           <div class="field">
             <label for="e-projet">Votre projet *</label>
-            <select id="e-projet" required>
+            <select id="e-projet" name="e-projet" required>
               <option value="">Sélectionner…</option>
               <option>Vendre</option>
               <option>Mettre en location</option>
@@ -136,23 +136,23 @@
           </div>
           <div class="field full">
             <label for="e-adresse">Adresse du bien *</label>
-            <input id="e-adresse" name="e-adresse" autocomplete="street-address" type="text" placeholder="N°, rue, commune" required>
+            <input id="e-adresse" name="e-adresse" autocomplete="street-address" type="text" placeholder="N°, rue, commune…" required>
           </div>
           <div class="field">
             <label for="e-surface">Surface habitable (m²) *</label>
-            <input id="e-surface" type="number" min="1" placeholder="ex : 120" required>
+            <input id="e-surface" name="e-surface" type="number" inputmode="numeric" min="1" placeholder="ex : 120…" required>
           </div>
           <div class="field">
             <label for="e-pieces">Nombre de pièces</label>
-            <input id="e-pieces" type="number" min="1" placeholder="ex : 5">
+            <input id="e-pieces" name="e-pieces" type="number" inputmode="numeric" min="1" placeholder="ex : 5…">
           </div>
           <div class="field">
             <label for="e-annee">Année de construction</label>
-            <input id="e-annee" type="number" min="1700" max="2026" placeholder="ex : 1930">
+            <input id="e-annee" name="e-annee" type="number" inputmode="numeric" min="1700" max="2026" placeholder="ex : 1930…">
           </div>
           <div class="field">
             <label for="e-etat">État général</label>
-            <select id="e-etat">
+            <select id="e-etat" name="e-etat">
               <option value="">Sélectionner…</option>
               <option>À rénover</option>
               <option>Bon état</option>
@@ -162,12 +162,12 @@
           <div class="field full">
             <label>Équipements</label>
             <div class="checks">
-              <label><input type="checkbox"> Parking</label>
-              <label><input type="checkbox"> Garage</label>
-              <label><input type="checkbox"> Terrasse</label>
-              <label><input type="checkbox"> Balcon</label>
-              <label><input type="checkbox"> Ascenseur</label>
-              <label><input type="checkbox"> Cave</label>
+              <label><input type="checkbox" name="e-parking"> Parking</label>
+              <label><input type="checkbox" name="e-garage"> Garage</label>
+              <label><input type="checkbox" name="e-terrasse"> Terrasse</label>
+              <label><input type="checkbox" name="e-balcon"> Balcon</label>
+              <label><input type="checkbox" name="e-ascenseur"> Ascenseur</label>
+              <label><input type="checkbox" name="e-cave"> Cave</label>
             </div>
           </div>
           <div class="field">
@@ -184,7 +184,7 @@
           </div>
           <div class="field full">
             <label for="e-message">Précisions utiles</label>
-            <textarea id="e-message" rows="4" placeholder="Travaux récents, particularités, échéance souhaitée…"></textarea>
+            <textarea id="e-message" name="e-message" rows="4" placeholder="Travaux récents, particularités, échéance souhaitée…"></textarea>
           </div>
         </div>
         <p style="margin-top:26px"><button class="btn btn-gold" type="submit">Demander mon estimation <span class="arrow">→</span></button></p>
@@ -261,8 +261,8 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=20261111a"></script>
-  <script src="js/main.js?v=20261111a"></script>
-  <script src="js/cookies.js?v=20261111a"></script>
+  <script src="js/data.js?v=20261111b"></script>
+  <script src="js/main.js?v=20261111b"></script>
+  <script src="js/cookies.js?v=20261111b"></script>
 </body>
 </html>
