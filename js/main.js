@@ -86,7 +86,11 @@ function observeNew(container) {
 // ---------- Accueil : biens à la une ----------
 const featured = document.getElementById("featured-listings");
 if (featured) {
-  const selection = LISTINGS.filter((l) => l.statut !== "vendu" && l.id !== featured.dataset.exclude).slice(0, 3);
+  const dispo = LISTINGS.filter((l) => l.statut !== "vendu" && l.id !== featured.dataset.exclude);
+  // Ordre choisi (data-order), puis les autres biens disponibles
+  const ordre = (featured.dataset.order || "").split(",").filter(Boolean);
+  const selection = ordre.map((id) => dispo.find((l) => l.id === id)).filter(Boolean)
+    .concat(dispo.filter((l) => !ordre.includes(l.id))).slice(0, 3);
   featured.innerHTML = selection.map((l, i) => listingCardHTML(l, i)).join("");
   observeNew(featured);
 }
@@ -113,7 +117,7 @@ if (quickSearch) {
   if (villeSel && typeof LISTINGS !== "undefined") {
     const villes = [...new Set(LISTINGS.map((l) => l.ville.split(", ")[0]))].sort();
     villeSel.innerHTML =
-      '<option value="">Toute la métropole</option>' +
+      '<option value="">Toutes</option>' +
       villes.map((v) => `<option>${v}</option>`).join("");
   }
   let transaction = "location";
