@@ -28,11 +28,12 @@ Tous les biens affichés sont dans `js/data.js`, tableau `LISTINGS`. Une entrée
 1. Bien qui passe « disponible » (ou mis en vente) : ajouter l'entrée dans `LISTINGS` (en tête pour une vente, après les ventes pour une location) et ses photos dans `assets/photos/<id>/`.
 2. Bien loué ou vendu : retirer l'entrée de `LISTINGS` et supprimer son dossier photos.
 3. Vérifier la syntaxe : `node --check js/data.js`.
-4. Commit en français (« Ajout : studio 30 m² Mons » / « Retrait : local 27 m² Roubaix, loué ») puis push sur `main`.
+4. **Régénérer les fiches statiques** : `node tools/generer-fiches.js`. Ce script crée une page `bien-<id>.html` par bien (titre, description, balises de partage, données structurées Google `RealEstateListing`, contenu lisible sans JavaScript), supprime celles des biens retirés et met à jour `sitemap.xml`. Ne jamais modifier ces pages à la main : modifier `js/data.js` (ou le gabarit `bien.html`) puis relancer le script.
+5. Commit en français (« Ajout : studio 30 m² Mons » / « Retrait : local 27 m² Roubaix, loué ») puis push sur `main`.
 
 ## Pages
 
-index, annonces, bien (fiche, `bien.html?id=<id>`), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, actualites, mentions-legales.
+index, annonces, fiches des biens (`bien-<id>.html`, générées ; l'ancienne adresse `bien.html?id=<id>` renvoie vers la fiche et n'est pas indexée), tarifs, estimation, contact, dossier-locataire, a-propos, recrutement, actualites, mentions-legales.
 
 ## Actualités (« le journal »)
 
@@ -46,3 +47,10 @@ index, annonces, bien (fiche, `bien.html?id=<id>`), tarifs, estimation, contact,
 ## Cache des navigateurs
 
 Les pages appellent `css/style.css?v=AAAAMMJJx` et `js/*.js?v=AAAAMMJJx`. Après toute modification du CSS ou d'un JS, changer ce numéro dans toutes les pages (même valeur partout), sinon les téléphones gardent l'ancienne version en mémoire.
+
+## Référencement (SEO)
+
+- Chaque page a un `<title>` de 65 caractères au plus, une `meta description` de 150 à 160 caractères, une balise `canonical` et un seul `<h1>`.
+- Données structurées : `RealEstateAgent` (accueil, contact), `RealEstateListing` + fil d'Ariane (fiches des biens, générées), `NewsArticle` (articles d'actualité : mettre à jour `dateModified` quand un article change).
+- `sitemap.xml` liste toutes les pages publiques ; le script des fiches gère les lignes `bien-…`. Ajouter à la main les nouvelles pages et articles.
+- Les liens internes vers un bien pointent vers `bien-<id>.html`.

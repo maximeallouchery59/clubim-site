@@ -6,10 +6,16 @@
   const root = document.getElementById("bien-root");
   if (!root) return;
 
-  const id = new URLSearchParams(window.location.search).get("id");
+  const qid = new URLSearchParams(window.location.search).get("id");
+  // Ancienne adresse bien.html?id=… : renvoi vers la fiche statique bien-<id>.html
+  if (!window.BIEN_ID && qid && LISTINGS.some((l) => l.id === qid)) {
+    window.location.replace(`bien-${qid}.html`);
+    return;
+  }
+  const id = window.BIEN_ID || qid;
   const bien = LISTINGS.find((l) => l.id === id) || LISTINGS[0];
 
-  document.title = `${bien.titre} : ${bien.ville} | CLUBIM`;
+  if (!window.BIEN_ID) document.title = `${bien.titre} : ${bien.ville} | CLUBIM`;
 
   const dpeLetters = ["A", "B", "C", "D", "E", "F", "G"];
   const dpeHTML = dpeLetters

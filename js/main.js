@@ -47,7 +47,7 @@ function listingCardHTML(l, seed = 0) {
   ].filter(Boolean).map((s) => `<span>${s}</span>`).join("");
 
   return `
-    <a class="listing-card reveal" href="bien.html?id=${l.id}">
+    <a class="listing-card reveal" href="bien-${l.id}.html">
       <div class="listing-media">
         <img src="${listingMediaSrc(l, seed)}" alt="${l.titre}, ${l.ville}" width="800" height="600" loading="lazy">
         ${tag}

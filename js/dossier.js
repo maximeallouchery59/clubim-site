@@ -24,7 +24,7 @@
     banner.innerHTML = bien
       ? `<p class="kicker">Votre candidature concerne</p>
          <h3>${bien.titre}</h3>
-         <p>${bien.ville} · ${formatPrix(bien)} · ${bien.surface} m², réf. ${refBien} · <a href="bien.html?id=${bien.id}">revoir l'annonce</a></p>`
+         <p>${bien.ville} · ${formatPrix(bien)} · ${bien.surface} m², réf. ${refBien} · <a href="bien-${bien.id}.html">revoir l'annonce</a></p>`
       : `<p class="kicker">Candidature spontanée</p>
          <h3>Dossier locataire</h3>
          <p>Aucun bien précisé, votre dossier sera étudié pour l'ensemble de nos locations. <a href="annonces.html?transaction=location">Voir les biens disponibles</a></p>`;
