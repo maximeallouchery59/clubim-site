@@ -22,8 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="css/style.css?v=20261111b">
+  <link rel="stylesheet" href="css/style.css?v=20261111c">
   <link rel="icon" type="image/svg+xml" href="assets/logo/clubim-logo-court.svg">
 </head>
 <body>
@@ -137,7 +136,13 @@
       </div>
 
       <div class="contact-map reveal" style="margin-top:50px">
-        <div id="agence-map" aria-label="Carte : agence CLUBIM, 205 rue Pierre Legrand à Lille, et stations de métro Fives et Marbrerie"></div>
+        <div id="agence-map" class="gmap" data-src="https://www.google.com/maps?q=CLUBIM,+205+rue+Pierre+Legrand,+59800+Lille&amp;hl=fr&amp;z=16&amp;output=embed">
+          <div class="gmap-consent">
+            <p><strong>Carte Google Maps</strong><br>L'affichage de la carte dépose des cookies Google. Elle s'affiche avec votre accord.</p>
+            <button type="button" class="btn btn-navy" data-gmap-load>Afficher la carte</button>
+            <a class="link-more" href="https://www.google.com/maps/search/?api=1&amp;query=CLUBIM+205+rue+Pierre+Legrand+59800+Lille" target="_blank" rel="noopener noreferrer">Ouvrir dans Google Maps <span class="arrow">→</span></a>
+          </div>
+        </div>
         <div class="map-legend">
           <span><i class="legend-pin"></i>Agence CLUBIM, 205 rue Pierre Legrand, 59800 Lille</span>
           <span><i class="legend-metro">M</i>Métro ligne 1 : Fives (4 min à pied) · Marbrerie (5 min à pied)</span>
@@ -201,49 +206,26 @@
     </div>
   </footer>
 
-  <script src="js/data.js?v=20261111b"></script>
-  <script src="js/main.js?v=20261111b"></script>
-  <script src="js/cookies.js?v=20261111b"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/data.js?v=20261111c"></script>
+  <script src="js/main.js?v=20261111c"></script>
+  <script src="js/cookies.js?v=20261111c"></script>
   <script>
     (function () {
-      const AGENCE = [50.63188, 3.09397];
-      const STATIONS = [
-        { c: [50.63302, 3.09055], nom: "Fives", marche: "4 min à pied" },
-        { c: [50.63002, 3.09788], nom: "Marbrerie", marche: "5 min à pied" }
-      ];
-      const map = L.map("agence-map", { scrollWheelZoom: false });
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 19
-      }).addTo(map);
-
-      // Agence
-      const agenceIcon = L.divIcon({
-        className: "",
-        html: '<div class="map-agence"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 11 12 4l8 7" stroke="#E9707C" stroke-width="1.6"/><rect x="6" y="11" width="12" height="9" stroke="#E9707C" stroke-width="1.6"/><rect x="10.5" y="14" width="3" height="6" fill="#BE3A48"/></svg><span>CLUBIM</span></div>',
-        iconSize: [110, 72],
-        iconAnchor: [55, 50]
+      const box = document.getElementById("agence-map");
+      if (!box) return;
+      function load() {
+        if (box.querySelector("iframe")) return;
+        box.innerHTML = '<iframe src="' + box.dataset.src + '" title="Carte Google Maps : agence CLUBIM, 205 rue Pierre Legrand à Lille" width="1200" height="440" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';
+      }
+      let c = null;
+      try { c = JSON.parse(localStorage.getItem("clubim-cookie-consent")); } catch (e) {}
+      if (c && c.perso) load();
+      box.addEventListener("click", function (e) {
+        if (e.target.closest("[data-gmap-load]")) load();
       });
-      L.marker(AGENCE, { icon: agenceIcon, zIndexOffset: 1000 })
-        .addTo(map)
-        .bindPopup("<strong>CLUBIM</strong><br>205 rue Pierre Legrand<br>59800 Lille");
-
-      // Stations de métro + liaisons piétonnes
-      STATIONS.forEach(function (s) {
-        L.polyline([AGENCE, s.c], { color: "#BE3A48", weight: 2, dashArray: "6 8", opacity: 0.85 }).addTo(map);
-        const ic = L.divIcon({
-          className: "",
-          html: '<div class="map-metro-wrap"><div class="map-metro">M</div><span class="map-metro-label">' + s.nom + " · " + s.marche + "</span></div>",
-          iconSize: [120, 58],
-          iconAnchor: [60, 15]
-        });
-        L.marker(s.c, { icon: ic })
-          .addTo(map)
-          .bindPopup("<strong>Métro " + s.nom + "</strong><br>Ligne 1, " + s.marche + " de l'agence");
+      document.addEventListener("clubim-consent", function (e) {
+        if (e.detail && e.detail.perso) load();
       });
-
-      map.fitBounds(L.latLngBounds([AGENCE].concat(STATIONS.map(function (s) { return s.c; }))).pad(0.3));
     })();
   </script>
 </body>

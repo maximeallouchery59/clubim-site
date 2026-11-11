@@ -26,6 +26,7 @@
       perso: !!perso,
       date: Date.now()
     }));
+    document.dispatchEvent(new CustomEvent("clubim-consent", { detail: { analytics: !!analytics, perso: !!perso } }));
     /* C'est ici que l'on chargerait les scripts de mesure d'audience
        ou de personnalisation, uniquement si le consentement le permet. */
   }
@@ -68,7 +69,7 @@
     '      <label class="switch"><input type="checkbox" id="ck-analytics"><span></span></label>' +
     "    </div>" +
     '    <div class="cookie-row">' +
-    "      <div><h4>Contenus personnalisés</h4><p>Mémorise vos recherches pour vous présenter des biens plus pertinents lors de vos prochaines visites.</p></div>" +
+    "      <div><h4>Contenus personnalisés</h4><p>Mémorise vos recherches pour vous présenter des biens plus pertinents, et affiche la carte Google Maps de la page contact.</p></div>" +
     '      <label class="switch"><input type="checkbox" id="ck-perso"><span></span></label>' +
     "    </div>" +
     "  </div>" +
