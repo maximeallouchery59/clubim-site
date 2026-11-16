@@ -92,6 +92,32 @@ const LISTINGS = [
     ]
   },
   {
+    id: "t3-95-lille-saint-maurice",
+    titre: "Grand T3 de 95 m² avec cave et box",
+    type: "Appartement",
+    transaction: "location",
+    ville: "Lille, Saint-Maurice",
+    prix: 1285,
+    surface: 95.24,
+    pieces: 3,
+    chambres: 2,
+    dpe: "E",
+    ges: "B",
+    photos: ["1","2","3","4","5","6","7","8","9","10","11","12","13"].map((n) => `assets/photos/t3-95-lille-saint-maurice/${n}.jpg`),
+    art: { style: "moderne", palette: "cream" },
+    description:
+      "Grand T3 de 95 m² au 3e étage, avec ascenseur, d'une résidence avec gardien de l'avenue Émile Zola, à Lille Saint-Maurice. Disponible le 5 décembre 2026.\n\nLe séjour, en parquet, est très lumineux grâce à ses grandes baies vitrées coulissantes et se prolonge par un espace ouvert. La cuisine séparée est équipée (plaques, four, hotte, rangements) avec un coin repas. Deux chambres en parquet, une salle de douche à l'italienne avec meuble vasque, un WC séparé et des placards complètent l'appartement.\n\nChauffage et eau chaude électriques individuels. Une cave et un box fermé en sous-sol sont compris.\n\nLes visites se font sur rendez-vous.",
+    atouts: ["95 m², séjour lumineux en parquet", "Deux chambres et des placards", "Cuisine séparée et équipée", "Ascenseur, gardien, interphone", "Cave et box fermé en sous-sol", "Disponible le 5 décembre 2026"],
+    mentions: [
+      "Loyer : 1 285 € par mois charges comprises, soit 1 000 € de loyer + 285 € de provision sur charges (charges de copropriété et taxe d'ordures ménagères), régularisation annuelle",
+      "Dépôt de garantie : 1 000 €",
+      "Honoraires à la charge du locataire, état des lieux compris : 1 249,55 € TTC",
+      "Logement situé en zone soumise à l'encadrement des loyers",
+      "Diagnostic de performance énergétique : classe E (287 kWh/m²/an). Classe climat (GES) : B (9 kg CO2/m²/an). Montant estimé des dépenses annuelles d'énergie pour un usage standard : entre 1 650 € et 2 280 € par an (prix de référence au 1er janvier 2021)",
+      "Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques : georisques.gouv.fr"
+    ]
+  },
+  {
     id: "local-27-roubaix",
     titre: "Local de 27 m² avec vitrine, rénové",
     type: "Local commercial",
