@@ -117,6 +117,32 @@ const LISTINGS = [
     ]
   },
   {
+    id: "maison-143-henin-beaumont",
+    titre: "Grande maison de ville, séjour de 47 m² et cour",
+    type: "Maison",
+    transaction: "location",
+    ville: "Hénin-Beaumont",
+    prix: 860,
+    surface: 143.7,
+    pieces: 4,
+    chambres: 2,
+    dpe: "C",
+    ges: "C",
+    photos: ["1","2","3","4","5","6","7","8","9"].map((n) => `assets/photos/maison-143-henin-beaumont/${n}.jpg`),
+    art: { style: "bourgeoise", palette: "cream" },
+    description:
+      "Maison de ville mitoyenne de 143,70 m² sur trois niveaux, avec cave, à Hénin-Beaumont, louée vide. Disponible courant décembre 2026, sous réserve de l'autorisation de mise en location (permis de louer) en cours.\n\nAu rez-de-chaussée, un séjour de 47 m² et une cuisine de 24 m² qui accueille facilement un coin repas et s'ouvre sur la cour par une grande baie vitrée. Un dégagement dessert un WC indépendant et une salle de bains avec baignoire.\n\nÀ l'étage, deux chambres de 18,5 m² et 12 m² et une salle d'eau avec double vasque et WC. Sous les toits, un grenier aménagé de 19 m² habitables (45,7 m² au sol) peut servir de bureau, de pièce de loisirs ou de chambre d'appoint.\n\nPetite cour avec un coin de jardin. Chauffage et eau chaude au gaz par chaudière à condensation, double vitrage, volets roulants et VMC. Maison sans garage, stationnement dans la rue et parking à proximité.\n\nLes visites se font sur rendez-vous.",
+    atouts: ["Séjour de 47 m² et cuisine de 24 m²", "Deux chambres et un grenier aménagé", "Salle de bains et salle d'eau", "Cour avec coin de jardin et cave", "DPE C, chaudière gaz à condensation"],
+    mentions: [
+      "Loyer : 860 € par mois charges comprises, soit 850 € de loyer + 10 € de provision sur charges (taxe d'ordures ménagères), régularisation annuelle",
+      "Dépôt de garantie : 850 €",
+      "Honoraires à la charge du locataire : 950 € TTC, dont 250 € TTC pour l'état des lieux",
+      "Logement soumis à autorisation préalable de mise en location (permis de louer), demande en cours",
+      "Diagnostic de performance énergétique : classe C (115 kWh/m²/an). Classe climat (GES) : C (20 kg CO2/m²/an). Montant estimé des dépenses annuelles d'énergie pour un usage standard : entre 1 630 € et 2 270 € par an (prix moyens des énergies indexés sur les années 2021, 2022 et 2023)",
+      "Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques : georisques.gouv.fr"
+    ]
+  },
+  {
     id: "t3-95-lille-saint-maurice",
     titre: "Grand T3 de 95 m² avec cave et box",
     type: "Appartement",
