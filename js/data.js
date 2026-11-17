@@ -92,6 +92,31 @@ const LISTINGS = [
     ]
   },
   {
+    id: "maison-86-houplines",
+    titre: "Maison de ville familiale, 4 chambres et cour",
+    type: "Maison",
+    transaction: "location",
+    ville: "Houplines",
+    prix: 865,
+    surface: 86.5,
+    pieces: 6,
+    chambres: 4,
+    dpe: "C",
+    ges: "B",
+    photos: ["1","2","3","4","5","6"].map((n) => `assets/photos/maison-86-houplines/${n}.jpg`),
+    art: { style: "bourgeoise", palette: "cream" },
+    description:
+      "Maison de ville mitoyenne de 86,5 m² sur deux niveaux à Houplines, louée vide. Disponible le 15 décembre 2026.\n\nAu rez-de-chaussée, un salon chauffé par un poêle à granulés, une salle à manger, une pièce lumineuse ouverte sur la cour par des baies coulissantes, une cuisine aménagée et une salle de bains avec baignoire. À l'étage, quatre chambres.\n\nUne cour privative dallée prolonge la maison. Chauffage par poêle à granulés et radiateurs électriques, eau chaude par ballon électrique.\n\nLes visites se font sur rendez-vous.",
+    atouts: ["Quatre chambres", "Salon avec poêle à granulés", "Pièce de vie ouverte sur la cour", "Cour privative dallée", "Disponible le 15 décembre 2026"],
+    mentions: [
+      "Loyer : 865 € par mois charges comprises, soit 850 € de loyer + 15 € de provision sur charges (taxe d'ordures ménagères), régularisation annuelle",
+      "Dépôt de garantie : 850 €",
+      "Honoraires à la charge du locataire : 850 € TTC, dont 250 € TTC pour l'état des lieux",
+      "Diagnostic de performance énergétique : classe C (177 kWh/m²/an). Classe climat (GES) : B (6 kg CO2/m²/an)",
+      "Les informations sur les risques auxquels ce bien est exposé sont disponibles sur le site Géorisques : georisques.gouv.fr"
+    ]
+  },
+  {
     id: "t3-95-lille-saint-maurice",
     titre: "Grand T3 de 95 m² avec cave et box",
     type: "Appartement",
